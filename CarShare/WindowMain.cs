@@ -52,10 +52,22 @@ namespace CarShare
             this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";
             foreach (Trajet traj in this.user.trajets)
             {
-                this.trajetOfUser1.Location = new System.Drawing.Point(0, 9);
-                this.trajetOfUser1.Name = "trajetOfUser1";
-                this.trajetOfUser1.Size = new System.Drawing.Size(750, 80);
-                this.trajetOfUser1.TabIndex = 0;
+                int i = 0;
+                int verticalLocation = 9;
+                trajetOfUser boxTrajet = new trajetOfUser();
+                boxTrajet.Location = new System.Drawing.Point(0, verticalLocation);
+                boxTrajet.Name = "trajetOfUser" + i;
+                boxTrajet.Size = new System.Drawing.Size(750, 80);
+                boxTrajet.TabIndex = 0;
+                boxTrajet.villeDepart.Text = traj.villeDepart;
+                boxTrajet.heureDepart.Text = traj.heureDepart;
+                boxTrajet.villeArrivee.Text = traj.villeArrivee;
+                boxTrajet.heureArrivee.Text = traj.heureArrivee;
+                boxTrajet.createur.Text = traj.createur;
+                boxTrajet.description.Text = traj.descriptionTrajet;
+                this.trajetUserList.Controls.Add(boxTrajet);
+                i++;
+                verticalLocation += 80;
             }
         }
 

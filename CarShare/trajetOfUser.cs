@@ -16,5 +16,10 @@ namespace CarShare
         {
             InitializeComponent();
         }
+
+        private void trajetOfUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -93,17 +93,11 @@
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Trajet.cs" />
-    <Compile Include="UserControl1.cs">
+    <Compile Include="trajetOfUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl2.Designer.cs">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <Compile Include="trajetOfUser.Designer.cs">
+      <DependentUpon>trajetOfUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs" />
     <Compile Include="WindowMain.cs">
@@ -129,8 +123,8 @@
     <EmbeddedResource Include="ModifInfo.resx">
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="trajetOfUser.resx">
+      <DependentUpon>trajetOfUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowLog.resx">
       <DependentUpon>WindowLog.cs</DependentUpon>

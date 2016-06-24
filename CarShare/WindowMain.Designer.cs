@@ -273,13 +273,6 @@
             this.villeDepartSeek.Size = new System.Drawing.Size(234, 45);
             this.villeDepartSeek.TabIndex = 3;
             // 
-            // trajetOfUser1
-            // 
-            this.trajetOfUser1.Location = new System.Drawing.Point(0, 9);
-            this.trajetOfUser1.Name = "trajetOfUser1";
-            this.trajetOfUser1.Size = new System.Drawing.Size(750, 80);
-            this.trajetOfUser1.TabIndex = 0;
-            // 
             // WindowMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
