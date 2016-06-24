@@ -86,7 +86,6 @@
       <DependentUpon>NewEtape.cs</DependentUpon>
     </Compile>
     <Compile Include="DataResources.cs" />
-    <Compile Include="Etape.cs" />
     <Compile Include="GererEtape.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,12 +99,6 @@
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Trajet.cs" />
-    <Compile Include="EtapeTrajet.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EtapeTrajet.Designer.cs">
-      <DependentUpon>EtapeTrajet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilisateur.cs" />
     <Compile Include="WindowMain.cs">
       <SubType>Form</SubType>
@@ -132,9 +125,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModifInfo.resx">
       <DependentUpon>ModifInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EtapeTrajet.resx">
-      <DependentUpon>EtapeTrajet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowLog.resx">
       <DependentUpon>WindowLog.cs</DependentUpon>

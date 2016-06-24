@@ -37,11 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.boxVilleArrivee = new CarShare.NewEtape();
             this.boxVilleDepart = new CarShare.NewEtape();
-            this.dateArrivee = new CarShare.Dates();
             this.dateDepart = new CarShare.Dates();
             this.trajetDescription = new System.Windows.Forms.RichTextBox();
             this.nouveauTrajet = new System.Windows.Forms.Button();
-            this.nouvelleEtape = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -113,11 +111,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.boxVilleArrivee);
             this.groupBox1.Controls.Add(this.boxVilleDepart);
-            this.groupBox1.Controls.Add(this.dateArrivee);
             this.groupBox1.Controls.Add(this.dateDepart);
             this.groupBox1.Controls.Add(this.trajetDescription);
             this.groupBox1.Controls.Add(this.nouveauTrajet);
-            this.groupBox1.Controls.Add(this.nouvelleEtape);
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(757, 150);
@@ -147,13 +143,6 @@
             this.boxVilleDepart.Size = new System.Drawing.Size(234, 45);
             this.boxVilleDepart.TabIndex = 27;
             // 
-            // dateArrivee
-            // 
-            this.dateArrivee.Location = new System.Drawing.Point(294, 15);
-            this.dateArrivee.Name = "dateArrivee";
-            this.dateArrivee.Size = new System.Drawing.Size(180, 46);
-            this.dateArrivee.TabIndex = 26;
-            // 
             // dateDepart
             // 
             this.dateDepart.Location = new System.Drawing.Point(19, 15);
@@ -180,16 +169,6 @@
             this.nouveauTrajet.UseVisualStyleBackColor = true;
             this.nouveauTrajet.Click += new System.EventHandler(this.ajouterTrajet_Click);
             // 
-            // nouvelleEtape
-            // 
-            this.nouvelleEtape.Location = new System.Drawing.Point(153, 118);
-            this.nouvelleEtape.Name = "nouvelleEtape";
-            this.nouvelleEtape.Size = new System.Drawing.Size(100, 23);
-            this.nouvelleEtape.TabIndex = 9;
-            this.nouvelleEtape.Text = "Ajouter une étape";
-            this.nouvelleEtape.UseVisualStyleBackColor = true;
-            this.nouvelleEtape.Click += new System.EventHandler(this.ajouterEtape_Click);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox4);
@@ -204,9 +183,9 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Location = new System.Drawing.Point(10, 145);
+            this.groupBox4.Location = new System.Drawing.Point(13, 168);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(757, 284);
+            this.groupBox4.Size = new System.Drawing.Size(750, 280);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
@@ -214,7 +193,7 @@
             // 
             this.groupBox3.Location = new System.Drawing.Point(10, 10);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(757, 130);
+            this.groupBox3.Size = new System.Drawing.Size(757, 150);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
@@ -292,9 +271,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button nouveauTrajet;
-        private System.Windows.Forms.Button nouvelleEtape;
         private System.Windows.Forms.RichTextBox trajetDescription;
-        private Dates dateArrivee;
         private Dates dateDepart;
         private NewEtape boxVilleArrivee;
         private NewEtape boxVilleDepart;

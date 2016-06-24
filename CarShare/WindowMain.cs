@@ -26,16 +26,10 @@ namespace CarShare
         public Destinations destinations { get; set; }
 
         /*
-         * Le trajet que l'utilisateur pourra créer.
-         */ 
-        private Trajet Trajet;
-        public Trajet trajet;
-
-        private List<EtapeTrajet> ListeTrajets;
-        public List<EtapeTrajet> listeTrajets;
-
-        private List<EtapeTrajet> ListeEtapes;
-        public List<EtapeTrajet> listeEtapes;
+         * La liste des trajets de l'utilisateur en cours 
+         */
+        private List<Trajet> listeTrajet = new List<Trajet>();
+        public Trajet trajet { get; set; }
 
         /*
          * Constructeur
@@ -47,8 +41,7 @@ namespace CarShare
             this.boxVilleDepart.initVilles(this.destinations.villes);
             this.boxVilleArrivee.initVilles(this.destinations.villes);
             this.user = utili;
-            this.trajet = new Trajet();
-            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";
+            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";       
         }
 
         /*  private void getTripsUser()
@@ -102,16 +95,22 @@ namespace CarShare
         private void ajouterTrajet_Click(object sender, EventArgs e)
         {
             NpgsqlConnection conn = DataResources.getConnection();
-            this.trajet.creerTrajet(conn);            
+            Trajet trajet = new Trajet();
+            trajet.createur = this.user.login;
+            trajet.descriptionTrajet = this.trajetDescription.Text;
+            trajet.dateTrajet = dateDepart.Day.Text + "/" + dateDepart.Month.Text + "/" + dateDepart.Year.Text;
+            trajet.heureDepart = boxVilleDepart.heure.Text + ":" + boxVilleDepart.minute.Text;
+            trajet.villeDepart = boxVilleDepart.ville.Text;
+            trajet.heureArrivee = boxVilleArrivee.heure.Text + ":" + boxVilleArrivee.minute.Text;
+            trajet.villeArrivee = boxVilleArrivee.ville.Text;
+            trajet.creerTrajet(conn);
         }
 
-        /*
-         * Méthode ouvrant la fenêtre pour ajouter des étapes au trajet
-         */
-        private void ajouterEtape_Click(object sender, EventArgs e)
+        public void getTrajetsUser()
         {
-            GererEtape newEtape = new GererEtape(this.destinations, this.trajet);
-            newEtape.Show();
+            NpgsqlConnection conn = DataResources.getConnection();
+            string query = "SELECT * FROM trajet WHERE login = " + this.user.login;
         }
     }
 }
+

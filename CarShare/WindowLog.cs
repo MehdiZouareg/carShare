@@ -29,8 +29,8 @@ namespace CarShare
             string login = this.textBoxLogin.Text;
             string passwd = this.textBoxPasswd.Text;
             string query = "SELECT * FROM utilisateur WHERE login = '" + login + "'";
-            NpgsqlConnection connection = DataResources.getConnection();
-            NpgsqlDataReader reader = DataResources.getReader(connection, query);
+            NpgsqlConnection conn = DataResources.getConnection();
+            NpgsqlDataReader reader = DataResources.getReader(query);
             reader.Read();
             string pseudo = reader.GetString(0);
             string mdp = reader.GetString(6);
@@ -43,7 +43,6 @@ namespace CarShare
             {
                 MessageBox.Show("Error : Bad Login", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DataResources.closeReader(connection, reader);
         }           
 
         /*
