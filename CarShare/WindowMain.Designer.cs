@@ -32,27 +32,33 @@
             this.gridUser = new System.Windows.Forms.DataGridView();
             this.tabTrajets = new System.Windows.Forms.TabControl();
             this.tabPageCreateTraj = new System.Windows.Forms.TabPage();
-            this.TrajectDataGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCreate = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.boxVilleArrivee = new CarShare.NewEtape();
-            this.boxVilleDepart = new CarShare.NewEtape();
-            this.dateDepart = new CarShare.Dates();
             this.trajetDescription = new System.Windows.Forms.RichTextBox();
             this.nouveauTrajet = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSeek = new System.Windows.Forms.GroupBox();
             this.modifInfo = new System.Windows.Forms.Button();
             this.disconnect = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
+            this.buttonSeek = new System.Windows.Forms.Button();
+            this.trajetUserList = new System.Windows.Forms.GroupBox();
+            this.boxVilleArrivee = new CarShare.NewEtape();
+            this.boxVilleDepart = new CarShare.NewEtape();
+            this.dateDepart = new CarShare.Dates();
+            this.dateSeek = new CarShare.Dates();
+            this.villeArriveeSeek = new CarShare.NewEtape();
+            this.villeDepartSeek = new CarShare.NewEtape();
+            this.trajetOfUser1 = new CarShare.trajetOfUser();
             ((System.ComponentModel.ISupportInitialize)(this.gridWelcome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridUser)).BeginInit();
             this.tabTrajets.SuspendLayout();
             this.tabPageCreateTraj.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TrajectDataGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxCreate.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBoxSeek.SuspendLayout();
+            this.trajetUserList.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridWelcome
@@ -88,8 +94,8 @@
             // 
             // tabPageCreateTraj
             // 
-            this.tabPageCreateTraj.Controls.Add(this.TrajectDataGrid);
-            this.tabPageCreateTraj.Controls.Add(this.groupBox1);
+            this.tabPageCreateTraj.Controls.Add(this.trajetUserList);
+            this.tabPageCreateTraj.Controls.Add(this.groupBoxCreate);
             this.tabPageCreateTraj.Location = new System.Drawing.Point(4, 22);
             this.tabPageCreateTraj.Name = "tabPageCreateTraj";
             this.tabPageCreateTraj.Padding = new System.Windows.Forms.Padding(3);
@@ -98,27 +104,19 @@
             this.tabPageCreateTraj.Text = "Créer un trajet";
             this.tabPageCreateTraj.UseVisualStyleBackColor = true;
             // 
-            // TrajectDataGrid
+            // groupBoxCreate
             // 
-            this.TrajectDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TrajectDataGrid.Location = new System.Drawing.Point(13, 168);
-            this.TrajectDataGrid.Name = "TrajectDataGrid";
-            this.TrajectDataGrid.Size = new System.Drawing.Size(750, 280);
-            this.TrajectDataGrid.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.boxVilleArrivee);
-            this.groupBox1.Controls.Add(this.boxVilleDepart);
-            this.groupBox1.Controls.Add(this.dateDepart);
-            this.groupBox1.Controls.Add(this.trajetDescription);
-            this.groupBox1.Controls.Add(this.nouveauTrajet);
-            this.groupBox1.Location = new System.Drawing.Point(10, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(757, 150);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            this.groupBoxCreate.Controls.Add(this.label1);
+            this.groupBoxCreate.Controls.Add(this.boxVilleArrivee);
+            this.groupBoxCreate.Controls.Add(this.boxVilleDepart);
+            this.groupBoxCreate.Controls.Add(this.dateDepart);
+            this.groupBoxCreate.Controls.Add(this.trajetDescription);
+            this.groupBoxCreate.Controls.Add(this.nouveauTrajet);
+            this.groupBoxCreate.Location = new System.Drawing.Point(10, 10);
+            this.groupBoxCreate.Name = "groupBoxCreate";
+            this.groupBoxCreate.Size = new System.Drawing.Size(757, 150);
+            this.groupBoxCreate.TabIndex = 0;
+            this.groupBoxCreate.TabStop = false;
             // 
             // label1
             // 
@@ -128,27 +126,6 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 29;
             this.label1.Text = "label1";
-            // 
-            // boxVilleArrivee
-            // 
-            this.boxVilleArrivee.Location = new System.Drawing.Point(294, 67);
-            this.boxVilleArrivee.Name = "boxVilleArrivee";
-            this.boxVilleArrivee.Size = new System.Drawing.Size(234, 45);
-            this.boxVilleArrivee.TabIndex = 28;
-            // 
-            // boxVilleDepart
-            // 
-            this.boxVilleDepart.Location = new System.Drawing.Point(19, 67);
-            this.boxVilleDepart.Name = "boxVilleDepart";
-            this.boxVilleDepart.Size = new System.Drawing.Size(234, 45);
-            this.boxVilleDepart.TabIndex = 27;
-            // 
-            // dateDepart
-            // 
-            this.dateDepart.Location = new System.Drawing.Point(19, 15);
-            this.dateDepart.Name = "dateDepart";
-            this.dateDepart.Size = new System.Drawing.Size(180, 46);
-            this.dateDepart.TabIndex = 25;
             // 
             // trajetDescription
             // 
@@ -172,7 +149,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBoxSeek);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -189,13 +166,17 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
-            // groupBox3
+            // groupBoxSeek
             // 
-            this.groupBox3.Location = new System.Drawing.Point(10, 10);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(757, 150);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
+            this.groupBoxSeek.Controls.Add(this.buttonSeek);
+            this.groupBoxSeek.Controls.Add(this.dateSeek);
+            this.groupBoxSeek.Controls.Add(this.villeArriveeSeek);
+            this.groupBoxSeek.Controls.Add(this.villeDepartSeek);
+            this.groupBoxSeek.Location = new System.Drawing.Point(10, 10);
+            this.groupBoxSeek.Name = "groupBoxSeek";
+            this.groupBoxSeek.Size = new System.Drawing.Size(757, 150);
+            this.groupBoxSeek.TabIndex = 1;
+            this.groupBoxSeek.TabStop = false;
             // 
             // modifInfo
             // 
@@ -231,6 +212,74 @@
             this.labelWelcome.TabIndex = 6;
             this.labelWelcome.Text = "label";
             // 
+            // buttonSeek
+            // 
+            this.buttonSeek.Location = new System.Drawing.Point(603, 71);
+            this.buttonSeek.Name = "buttonSeek";
+            this.buttonSeek.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeek.TabIndex = 6;
+            this.buttonSeek.Text = "Rechercher";
+            this.buttonSeek.UseVisualStyleBackColor = true;
+            // 
+            // trajetUserList
+            // 
+            this.trajetUserList.Controls.Add(this.trajetOfUser1);
+            this.trajetUserList.Location = new System.Drawing.Point(13, 168);
+            this.trajetUserList.Name = "trajetUserList";
+            this.trajetUserList.Size = new System.Drawing.Size(750, 280);
+            this.trajetUserList.TabIndex = 1;
+            this.trajetUserList.TabStop = false;
+            this.trajetUserList.Text = "groupBox1";
+            // 
+            // boxVilleArrivee
+            // 
+            this.boxVilleArrivee.Location = new System.Drawing.Point(294, 67);
+            this.boxVilleArrivee.Name = "boxVilleArrivee";
+            this.boxVilleArrivee.Size = new System.Drawing.Size(234, 45);
+            this.boxVilleArrivee.TabIndex = 28;
+            // 
+            // boxVilleDepart
+            // 
+            this.boxVilleDepart.Location = new System.Drawing.Point(19, 67);
+            this.boxVilleDepart.Name = "boxVilleDepart";
+            this.boxVilleDepart.Size = new System.Drawing.Size(234, 45);
+            this.boxVilleDepart.TabIndex = 27;
+            // 
+            // dateDepart
+            // 
+            this.dateDepart.Location = new System.Drawing.Point(19, 15);
+            this.dateDepart.Name = "dateDepart";
+            this.dateDepart.Size = new System.Drawing.Size(180, 46);
+            this.dateDepart.TabIndex = 25;
+            // 
+            // dateSeek
+            // 
+            this.dateSeek.Location = new System.Drawing.Point(20, 19);
+            this.dateSeek.Name = "dateSeek";
+            this.dateSeek.Size = new System.Drawing.Size(180, 46);
+            this.dateSeek.TabIndex = 5;
+            // 
+            // villeArriveeSeek
+            // 
+            this.villeArriveeSeek.Location = new System.Drawing.Point(276, 71);
+            this.villeArriveeSeek.Name = "villeArriveeSeek";
+            this.villeArriveeSeek.Size = new System.Drawing.Size(234, 45);
+            this.villeArriveeSeek.TabIndex = 4;
+            // 
+            // villeDepartSeek
+            // 
+            this.villeDepartSeek.Location = new System.Drawing.Point(20, 71);
+            this.villeDepartSeek.Name = "villeDepartSeek";
+            this.villeDepartSeek.Size = new System.Drawing.Size(234, 45);
+            this.villeDepartSeek.TabIndex = 3;
+            // 
+            // trajetOfUser1
+            // 
+            this.trajetOfUser1.Location = new System.Drawing.Point(0, 9);
+            this.trajetOfUser1.Name = "trajetOfUser1";
+            this.trajetOfUser1.Size = new System.Drawing.Size(750, 80);
+            this.trajetOfUser1.TabIndex = 0;
+            // 
             // WindowMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,10 +297,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridUser)).EndInit();
             this.tabTrajets.ResumeLayout(false);
             this.tabPageCreateTraj.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TrajectDataGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxCreate.ResumeLayout(false);
+            this.groupBoxCreate.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBoxSeek.ResumeLayout(false);
+            this.trajetUserList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,14 +318,19 @@
         private System.Windows.Forms.Button disconnect;
         private System.Windows.Forms.Label labelWelcome;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSeek;
+        private System.Windows.Forms.GroupBox groupBoxCreate;
         private System.Windows.Forms.Button nouveauTrajet;
         private System.Windows.Forms.RichTextBox trajetDescription;
         private Dates dateDepart;
         private NewEtape boxVilleArrivee;
         private NewEtape boxVilleDepart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView TrajectDataGrid;
+        private NewEtape villeDepartSeek;
+        private Dates dateSeek;
+        private NewEtape villeArriveeSeek;
+        private System.Windows.Forms.Button buttonSeek;
+        private System.Windows.Forms.GroupBox trajetUserList;
+        private trajetOfUser trajetOfUser1;
     }
 }

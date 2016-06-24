@@ -21,7 +21,7 @@ namespace CarShare
 
         /*
          * Les destinations à choisir dans les ListBox.
-         */ 
+         */
         private Destinations Destinations;
         public Destinations destinations { get; set; }
 
@@ -32,6 +32,12 @@ namespace CarShare
         public Trajet trajet { get; set; }
 
         /*
+         * 
+         */
+        private List<trajetOfUser> ListeTrajets = new List<trajetOfUser>();
+         public List<trajetOfUser> listeTrajets { get; set; }
+
+        /*
          * Constructeur
          */
         public WindowMain(Utilisateur utili) 
@@ -40,8 +46,17 @@ namespace CarShare
             this.destinations = new Destinations();
             this.boxVilleDepart.initVilles(this.destinations.villes);
             this.boxVilleArrivee.initVilles(this.destinations.villes);
+            this.villeDepartSeek.initVilles(this.destinations.villes);
+            this.villeArriveeSeek.initVilles(this.destinations.villes);
             this.user = utili;
-            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";       
+            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";
+            foreach (Trajet traj in this.user.trajets)
+            {
+                this.trajetOfUser1.Location = new System.Drawing.Point(0, 9);
+                this.trajetOfUser1.Name = "trajetOfUser1";
+                this.trajetOfUser1.Size = new System.Drawing.Size(750, 80);
+                this.trajetOfUser1.TabIndex = 0;
+            }
         }
 
         /*  private void getTripsUser()
@@ -104,13 +119,11 @@ namespace CarShare
             trajet.heureArrivee = boxVilleArrivee.heure.Text + ":" + boxVilleArrivee.minute.Text;
             trajet.villeArrivee = boxVilleArrivee.ville.Text;
             trajet.creerTrajet(conn);
-        }
-
-        public void getTrajetsUser()
-        {
-            NpgsqlConnection conn = DataResources.getConnection();
-            string query = "SELECT * FROM trajet WHERE login = " + this.user.login;
-
+            string query = "SELECT * FROM TRAJET WHERE login = " + this.user.login + " AND max(idTrajet)";
+            NpgsqlDataReader reader = DataResources.getReader(conn, query);
+            Trajet newTrajet = new Trajet(reader);
+            this.user.trajets.Add(newTrajet);
+            DataResources.closeReader(conn, reader);
         }
     }
 }

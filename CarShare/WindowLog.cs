@@ -30,7 +30,7 @@ namespace CarShare
             string passwd = this.textBoxPasswd.Text;
             string query = "SELECT * FROM utilisateur WHERE login = '" + login + "'";
             NpgsqlConnection conn = DataResources.getConnection();
-            NpgsqlDataReader reader = DataResources.getReader(query);
+            NpgsqlDataReader reader = DataResources.getReader(conn, query);
             reader.Read();
             string pseudo = reader.GetString(0);
             string mdp = reader.GetString(6);

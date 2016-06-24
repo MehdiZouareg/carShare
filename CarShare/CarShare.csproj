@@ -86,12 +86,6 @@
       <DependentUpon>NewEtape.cs</DependentUpon>
     </Compile>
     <Compile Include="DataResources.cs" />
-    <Compile Include="GererEtape.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GererEtape.Designer.cs">
-      <DependentUpon>GererEtape.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModifInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +93,18 @@
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Trajet.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl2.Designer.cs">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur.cs" />
     <Compile Include="WindowMain.cs">
       <SubType>Form</SubType>
@@ -120,11 +126,11 @@
     <EmbeddedResource Include="NewEtape.resx">
       <DependentUpon>NewEtape.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GererEtape.resx">
-      <DependentUpon>GererEtape.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ModifInfo.resx">
       <DependentUpon>ModifInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowLog.resx">
       <DependentUpon>WindowLog.cs</DependentUpon>

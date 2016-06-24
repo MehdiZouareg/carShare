@@ -78,3 +78,16 @@ D:\Projet-Objet-Version-Courte\CarShareCode\CarShare\obj\Debug\CarShare.pdb
 C:\Users\claudio\Documents\Projets\carShare\CarShare\bin\Debug\CarShare.exe.config
 C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.exe
 C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.pdb
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.csprojResolveAssemblyReference.cache
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.Dates.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.NewEtape.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.ModifInfo.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.WindowLog.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.Properties.Resources.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.WindowMain.resources
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.csproj.GenerateResource.Cache
+C:\Users\claudio\Documents\Projets\carShare\CarShare\bin\Debug\CarShare.exe
+C:\Users\claudio\Documents\Projets\carShare\CarShare\bin\Debug\CarShare.pdb
+C:\Users\claudio\Documents\Projets\carShare\CarShare\bin\Debug\Npgsql.dll
+C:\Users\claudio\Documents\Projets\carShare\CarShare\bin\Debug\Npgsql.xml
+C:\Users\claudio\Documents\Projets\carShare\CarShare\obj\Debug\CarShare.trajetOfUser.resources
