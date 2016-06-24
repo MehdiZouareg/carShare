@@ -22,7 +22,6 @@ namespace CarShare
             this.description = reader.GetString(5);
             this.mdp = reader.GetString(6);
             this.trajets = this.recupTrajets();
-            this.Etapes = this.recupEtapes();
         }
 
         private string Login;
@@ -33,7 +32,6 @@ namespace CarShare
         private string Description;
         private string Mdp;
         private List<Trajet> Trajets;
-        private List<Etape> Etapes;
 
         public string login { get; set; }
         public string nom { get; set; }
@@ -43,7 +41,6 @@ namespace CarShare
         public string description { get; set; }
         public string mdp { get; set; }
         public List<Trajet> trajets { get; set; }
-        public List<Etape> etapes { get; set; }
 
         /*
          * Méthode qui récupère les trajets dont l'utilisateur est le créateur.
@@ -59,30 +56,6 @@ namespace CarShare
             DataResources.closeReader(conn, reader);
             return liste;
         }
-        
-        /*
-         * Méthode qui récupère les étapes dans lesquelles l'utilisateur est inscrit.
-         */
-        private List<Etape> recupEtapes()
-        {
-            List<Etape> liste = new List<Etape>();
-            string query = "SELECT * FROM etape e INNER JOIN sinscrit_a s ON e.idtrajet = s.idtrajet AND e.noetape = s.noetape WHERE login = '" + this.login + "'";
-            NpgsqlConnection conn = DataResources.getConnection();
-            NpgsqlDataReader reader = DataResources.getReader(conn, query);
-            while (reader.Read())
-                liste.Add(new Etape(reader));
-            DataResources.closeReader(conn, reader);
-            return liste;
-        }
 
-        /*
-         * Méthode permettant de créer les trajets et les étapes qui lui sont liées. Appelle des méthodes de "Trajet" et "Etape".
-         */
-        public void creerTrajetEtEtapes(NpgsqlConnection conn, Trajet trajet)
-        {
-            trajet.creerTrajet(conn);
-            foreach (Etape stp in etapes)
-                stp.creerEtape(conn);
-        }
     }
 }
