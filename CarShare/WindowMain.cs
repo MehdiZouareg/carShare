@@ -110,6 +110,7 @@ namespace CarShare
         {
             NpgsqlConnection conn = DataResources.getConnection();
             string query = "SELECT * FROM trajet WHERE login = " + this.user.login;
+
         }
     }
 }
