@@ -56,6 +56,5 @@ namespace CarShare
             DataResources.closeReader(conn, reader);
             return liste;
         }
-
     }
 }

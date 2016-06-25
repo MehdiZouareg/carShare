@@ -21,7 +21,7 @@ namespace CarShare
 
         /*
          * Les destinations à choisir dans les ListBox.
-         */ 
+         */
         private Destinations Destinations;
         public Destinations destinations { get; set; }
 
@@ -32,6 +32,12 @@ namespace CarShare
         public Trajet trajet { get; set; }
 
         /*
+         * 
+         */
+        private List<trajetOfUser> ListeTrajets = new List<trajetOfUser>();
+         public List<trajetOfUser> listeTrajets { get; set; }
+
+        /*
          * Constructeur
          */
         public WindowMain(Utilisateur utili) 
@@ -40,8 +46,29 @@ namespace CarShare
             this.destinations = new Destinations();
             this.boxVilleDepart.initVilles(this.destinations.villes);
             this.boxVilleArrivee.initVilles(this.destinations.villes);
+            this.villeDepartSeek.initVilles(this.destinations.villes);
+            this.villeArriveeSeek.initVilles(this.destinations.villes);
             this.user = utili;
-            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";       
+            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";
+            foreach (Trajet traj in this.user.trajets)
+            {
+                int i = 0;
+                int verticalLocation = 9;
+                trajetOfUser boxTrajet = new trajetOfUser();
+                boxTrajet.Location = new System.Drawing.Point(0, verticalLocation);
+                boxTrajet.Name = "trajetOfUser" + i;
+                boxTrajet.Size = new System.Drawing.Size(750, 80);
+                boxTrajet.TabIndex = 0;
+                boxTrajet.villeDepart.Text = traj.villeDepart;
+                boxTrajet.heureDepart.Text = traj.heureDepart;
+                boxTrajet.villeArrivee.Text = traj.villeArrivee;
+                boxTrajet.heureArrivee.Text = traj.heureArrivee;
+                boxTrajet.createur.Text = traj.createur;
+                boxTrajet.description.Text = traj.descriptionTrajet;
+                this.trajetUserList.Controls.Add(boxTrajet);
+                i++;
+                verticalLocation += 80;
+            }
         }
 
         /*  private void getTripsUser()
@@ -104,12 +131,15 @@ namespace CarShare
             trajet.heureArrivee = boxVilleArrivee.heure.Text + ":" + boxVilleArrivee.minute.Text;
             trajet.villeArrivee = boxVilleArrivee.ville.Text;
             trajet.creerTrajet(conn);
-        }
-
-        public void getTrajetsUser()
-        {
-            NpgsqlConnection conn = DataResources.getConnection();
-            string query = "SELECT * FROM trajet WHERE login = " + this.user.login;
+            string query1 = "INSERT INTO trajet(date, ;
+            string query = "SELECT * FROM trajet WHERE login = '" + this.user.login  + "' AND idtrajet = (SELECT max(idtrajet) FROM trajet)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query1, conn);
+            cmd.ExecuteNonQuery();
+            NpgsqlDataReader reader = DataResources.getReader(conn, query);
+            DataResources.getReader(conn, query);
+            Trajet newTrajet = new Trajet(reader);
+            this.user.trajets.Add(newTrajet);
+            DataResources.closeReader(conn, reader);
         }
     }
 }

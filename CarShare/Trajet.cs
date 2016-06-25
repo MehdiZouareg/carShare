@@ -70,21 +70,7 @@ namespace CarShare
          */
         public void creerTrajet(NpgsqlConnection conn)
         {
-            string query = "INSERT INTO trajet(idtrajet, datetrajet, descriptiontrajet, login, villedepart, villearrivee, heuredepart, heurearrivee) VALUES('" + this.idTrajet + "', '" + this.dateTrajet + "', '" + this.descriptionTrajet + "', '" + this.createur + "', '" + this.villeDepart + "', '" + this.villeArrivee + "', '" + this.heureDepart + "', '" + this.heureArrivee;
-            //NpgsqlDataReader reader = DataResources.getReader(conn, query);
-            NpgsqlCommand command = new NpgsqlCommand(query, conn);
-        }
-
-        public NpgsqlDataReader recupTrajet(NpgsqlConnection conn, string villeSearch, string arriveeSearch, string  heureSearch, string jourSearch)
-        {
-            string query = "SELECT * FROM trajet WHERE " + villeSearch + " LIKE villedepart OR " + arriveeSearch + " LIKE heurearrivee OR " + heureSearch + " LIKE heuredepart OR " + jourSearch + " LIKE datetrajet";
-            NpgsqlDataReader reader = DataResources.getReader(conn, query);
-            return reader;
-        }
-
-        public void supprimerTrajet(NpgsqlConnection conn)
-        {
-            string query = "DELETE FROM trajet WHERE " + this.idTrajet + " AND " + this.dateTrajet + " AND " + this.descriptionTrajet + " AND " + this.createur + " AND " + this.villeDepart + " AND " + this.villeArrivee + " AND " + this.heureDepart + " AND " + this.heureArrivee;
+            string query = "INSERT INTO trajet(idtrajet, datetrajet, descriptiontrajet, login, villedepart, villearrivee, heuredepart, heurearrivee) VALUES('" + this.idTrajet + "', '" + this.dateTrajet + "', '" + this.descriptionTrajet + "', '" + this.createur + "', '" + this.villeDepart + "', '" + this.villeArrivee + "', '" + this.heureDepart + "', '" + this.heureArrivee + "'";
             NpgsqlDataReader reader = DataResources.getReader(conn, query);
             reader.Close();
         }
