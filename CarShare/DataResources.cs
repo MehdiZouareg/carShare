@@ -18,7 +18,7 @@ namespace CarShare
          */
         public static NpgsqlConnection getConnection()
         {
-            NpgsqlConnection conn = new NpgsqlConnection("User Id=goodman;Password=goodman;Host=192.168.1.92;Database=gsb-db");
+            NpgsqlConnection conn = new NpgsqlConnection("User Id=lambda;Password=lambda;Host=192.168.1.80:5432;Database=carshare");
             conn.Open();
             return conn;
         }
