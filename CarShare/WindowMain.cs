@@ -131,8 +131,12 @@ namespace CarShare
             trajet.heureArrivee = boxVilleArrivee.heure.Text + ":" + boxVilleArrivee.minute.Text;
             trajet.villeArrivee = boxVilleArrivee.ville.Text;
             trajet.creerTrajet(conn);
-            string query = "SELECT * FROM TRAJET WHERE login = " + this.user.login + " AND max(idTrajet)";
+            string query1 = "INSERT INTO trajet(date, ;
+            string query = "SELECT * FROM trajet WHERE login = '" + this.user.login  + "' AND idtrajet = (SELECT max(idtrajet) FROM trajet)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query1, conn);
+            cmd.ExecuteNonQuery();
             NpgsqlDataReader reader = DataResources.getReader(conn, query);
+            DataResources.getReader(conn, query);
             Trajet newTrajet = new Trajet(reader);
             this.user.trajets.Add(newTrajet);
             DataResources.closeReader(conn, reader);

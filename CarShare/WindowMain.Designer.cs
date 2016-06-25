@@ -32,6 +32,7 @@
             this.gridUser = new System.Windows.Forms.DataGridView();
             this.tabTrajets = new System.Windows.Forms.TabControl();
             this.tabPageCreateTraj = new System.Windows.Forms.TabPage();
+            this.trajetUserList = new System.Windows.Forms.GroupBox();
             this.groupBoxCreate = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.trajetDescription = new System.Windows.Forms.RichTextBox();
@@ -39,18 +40,16 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBoxSeek = new System.Windows.Forms.GroupBox();
+            this.buttonSeek = new System.Windows.Forms.Button();
             this.modifInfo = new System.Windows.Forms.Button();
             this.disconnect = new System.Windows.Forms.Button();
             this.labelWelcome = new System.Windows.Forms.Label();
-            this.buttonSeek = new System.Windows.Forms.Button();
-            this.trajetUserList = new System.Windows.Forms.GroupBox();
             this.boxVilleArrivee = new CarShare.NewEtape();
             this.boxVilleDepart = new CarShare.NewEtape();
             this.dateDepart = new CarShare.Dates();
             this.dateSeek = new CarShare.Dates();
             this.villeArriveeSeek = new CarShare.NewEtape();
             this.villeDepartSeek = new CarShare.NewEtape();
-            this.trajetOfUser1 = new CarShare.trajetOfUser();
             ((System.ComponentModel.ISupportInitialize)(this.gridWelcome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridUser)).BeginInit();
             this.tabTrajets.SuspendLayout();
@@ -58,7 +57,6 @@
             this.groupBoxCreate.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBoxSeek.SuspendLayout();
-            this.trajetUserList.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridWelcome
@@ -103,6 +101,15 @@
             this.tabPageCreateTraj.TabIndex = 0;
             this.tabPageCreateTraj.Text = "Créer un trajet";
             this.tabPageCreateTraj.UseVisualStyleBackColor = true;
+            // 
+            // trajetUserList
+            // 
+            this.trajetUserList.Location = new System.Drawing.Point(13, 168);
+            this.trajetUserList.Name = "trajetUserList";
+            this.trajetUserList.Size = new System.Drawing.Size(750, 280);
+            this.trajetUserList.TabIndex = 1;
+            this.trajetUserList.TabStop = false;
+            this.trajetUserList.Text = "groupBox1";
             // 
             // groupBoxCreate
             // 
@@ -178,6 +185,15 @@
             this.groupBoxSeek.TabIndex = 1;
             this.groupBoxSeek.TabStop = false;
             // 
+            // buttonSeek
+            // 
+            this.buttonSeek.Location = new System.Drawing.Point(603, 71);
+            this.buttonSeek.Name = "buttonSeek";
+            this.buttonSeek.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeek.TabIndex = 6;
+            this.buttonSeek.Text = "Rechercher";
+            this.buttonSeek.UseVisualStyleBackColor = true;
+            // 
             // modifInfo
             // 
             this.modifInfo.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -211,25 +227,6 @@
             this.labelWelcome.Size = new System.Drawing.Size(63, 25);
             this.labelWelcome.TabIndex = 6;
             this.labelWelcome.Text = "label";
-            // 
-            // buttonSeek
-            // 
-            this.buttonSeek.Location = new System.Drawing.Point(603, 71);
-            this.buttonSeek.Name = "buttonSeek";
-            this.buttonSeek.Size = new System.Drawing.Size(75, 23);
-            this.buttonSeek.TabIndex = 6;
-            this.buttonSeek.Text = "Rechercher";
-            this.buttonSeek.UseVisualStyleBackColor = true;
-            // 
-            // trajetUserList
-            // 
-            this.trajetUserList.Controls.Add(this.trajetOfUser1);
-            this.trajetUserList.Location = new System.Drawing.Point(13, 168);
-            this.trajetUserList.Name = "trajetUserList";
-            this.trajetUserList.Size = new System.Drawing.Size(750, 280);
-            this.trajetUserList.TabIndex = 1;
-            this.trajetUserList.TabStop = false;
-            this.trajetUserList.Text = "groupBox1";
             // 
             // boxVilleArrivee
             // 
@@ -294,7 +291,6 @@
             this.groupBoxCreate.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBoxSeek.ResumeLayout(false);
-            this.trajetUserList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +320,5 @@
         private NewEtape villeArriveeSeek;
         private System.Windows.Forms.Button buttonSeek;
         private System.Windows.Forms.GroupBox trajetUserList;
-        private trajetOfUser trajetOfUser1;
     }
 }

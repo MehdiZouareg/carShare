@@ -55,8 +55,6 @@ namespace CarShare
             this.dateTrajet = date;
             this.descriptionTrajet = description;
             this.createur = pilote;
-            
-
         }
 
 
@@ -65,7 +63,7 @@ namespace CarShare
          */
         public void creerTrajet(NpgsqlConnection conn)
         {
-            string query = "INSERT INTO trajet(idtrajet, datetrajet, descriptiontrajet, login, villedepart, villearrivee, heuredepart, heurearrivee) VALUES('" + this.idTrajet + "', '" + this.dateTrajet + "', '" + this.descriptionTrajet + "', '" + this.createur + "', '" + this.villeDepart + "', '" + this.villeArrivee + "', '" + this.heureDepart + "', '" + this.heureArrivee;
+            string query = "INSERT INTO trajet(idtrajet, datetrajet, descriptiontrajet, login, villedepart, villearrivee, heuredepart, heurearrivee) VALUES('" + this.idTrajet + "', '" + this.dateTrajet + "', '" + this.descriptionTrajet + "', '" + this.createur + "', '" + this.villeDepart + "', '" + this.villeArrivee + "', '" + this.heureDepart + "', '" + this.heureArrivee + "'";
             NpgsqlDataReader reader = DataResources.getReader(conn, query);
             reader.Close();
         }
