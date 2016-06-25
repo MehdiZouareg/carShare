@@ -53,5 +53,15 @@ namespace CarShare
             this.Close();
             Application.Exit();
         }
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WindowLog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
