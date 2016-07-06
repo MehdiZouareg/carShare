@@ -22,6 +22,7 @@ namespace CarShare
             this.description = reader.GetString(5);
             this.mdp = reader.GetString(6);
             this.trajets = this.recupTrajets();
+            reader.Close();
         }
 
         private string Login;

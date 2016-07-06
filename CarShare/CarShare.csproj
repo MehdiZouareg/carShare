@@ -92,12 +92,24 @@
     <Compile Include="ModifInfo.Designer.cs">
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultatTrajet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResultatTrajet.Designer.cs">
+      <DependentUpon>ResultatTrajet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trajet.cs" />
     <Compile Include="trajetOfUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="trajetOfUser.Designer.cs">
       <DependentUpon>trajetOfUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrajetsRes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TrajetsRes.Designer.cs">
+      <DependentUpon>TrajetsRes.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs" />
     <Compile Include="WindowMain.cs">
@@ -123,8 +135,14 @@
     <EmbeddedResource Include="ModifInfo.resx">
       <DependentUpon>ModifInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResultatTrajet.resx">
+      <DependentUpon>ResultatTrajet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="trajetOfUser.resx">
       <DependentUpon>trajetOfUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrajetsRes.resx">
+      <DependentUpon>TrajetsRes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowLog.resx">
       <DependentUpon>WindowLog.cs</DependentUpon>
@@ -137,6 +155,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WindowMain.resx">
       <DependentUpon>WindowMain.cs</DependentUpon>
@@ -176,6 +195,21 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGO-GSB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greencar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gridcar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

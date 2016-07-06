@@ -43,60 +43,21 @@ namespace CarShare
         public WindowMain(Utilisateur utili) 
         {
             InitializeComponent();
+           
             this.destinations = new Destinations();
             this.boxVilleDepart.initVilles(this.destinations.villes);
             this.boxVilleArrivee.initVilles(this.destinations.villes);
             this.villeDepartSeek.initVilles(this.destinations.villes);
             this.villeArriveeSeek.initVilles(this.destinations.villes);
+            
             this.user = utili;
-            this.labelWelcome.Text = "Bonjour, " + this.user.login + ".";
-            foreach (Trajet traj in this.user.trajets)
-            {
-                int i = 0;
-                int verticalLocation = 9;
-                trajetOfUser boxTrajet = new trajetOfUser();
-                boxTrajet.Location = new System.Drawing.Point(0, verticalLocation);
-                boxTrajet.Name = "trajetOfUser" + i;
-                boxTrajet.Size = new System.Drawing.Size(750, 80);
-                boxTrajet.TabIndex = 0;
-                boxTrajet.villeDepart.Text = traj.villeDepart;
-                boxTrajet.heureDepart.Text = traj.heureDepart;
-                boxTrajet.villeArrivee.Text = traj.villeArrivee;
-                boxTrajet.heureArrivee.Text = traj.heureArrivee;
-                boxTrajet.createur.Text = traj.createur;
-                boxTrajet.description.Text = traj.descriptionTrajet;
-                this.trajetUserList.Controls.Add(boxTrajet);
-                i++;
-                verticalLocation += 80;
-            }
+
+            refreshTrajetListe(this.user.trajets, this.grilleTrajets);
+            this.labelWelcome.Text = "Bonjour, " + this.user.prenom + "." ;
+
         }
 
-        /*  private void getTripsUser()
-        {
-            int y_axe = 168;
-            foreach (Trajet t in this.user.trajets)
-            {
-                this.createControlEtapeOrTrajet(t, y_axe);
-                y_axe += 78;
-            }
-           foreach (Etape e in this.user.etapes)
-            {
-                this.createControlEtapeOrTrajet(e, y_axe);
-                y_axe += 78;
-            }
-        }
-
-        /* private void createControlEtapeOrTrajet(Trajet t, int y)
-        {
-            EtapeTrajet etapeTrajet = new EtapeTrajet(t);
-            etapeTrajet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            etapeTrajet.Location = new System.Drawing.Point(13, y);
-            etapeTrajet.Name = "etapeTrajet";
-            etapeTrajet.Size = new System.Drawing.Size(750, 78);
-            etapeTrajet.TabIndex = 2;
-            this.listeTrajets.Add(etapeTrajet);
-            this.TrajectDataGrid.Controls.Add(etapeTrajet);
-        } */
+      
 
         /*
          * Méthode ouvrant la fenêtre pour modifier les infos utilisateur.
@@ -122,24 +83,194 @@ namespace CarShare
         private void ajouterTrajet_Click(object sender, EventArgs e)
         {
             NpgsqlConnection conn = DataResources.getConnection();
+            
+
+            try
+            {
+                Trajet trajet = new Trajet(conn, this.user.login, this.trajetDescription.Text, boxDateDepart.Day.Text, boxDateDepart.Month.Text, boxDateDepart.Year.Text, boxVilleDepart.heure.Text, boxVilleDepart.minute.Text, boxVilleDepart.ville.Text, boxVilleArrivee.heure.Text, boxVilleArrivee.minute.Text, boxVilleArrivee.ville.Text);
+                DataResources.creerTrajet(conn, trajet);
+                MessageBox.Show("Votre trajet à été enregistré !");
+                string query = "SELECT * FROM trajet WHERE login = '" + this.user.login + "' AND idtrajet = (SELECT max(idtrajet) FROM trajet)";
+                NpgsqlDataReader reader = DataResources.getReader(conn, query);
+                reader.Read();
+                Trajet newTrajet = new Trajet(reader);
+                this.user.trajets.Add(newTrajet);
+                refreshTrajetListe(this.user.trajets, grilleTrajets);
+                DataResources.closeReader(conn, reader);
+            }
+            catch(System.FormatException)
+            {
+                MessageBox.Show("Veuillez saisir tout les champs requis !", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }  
+            
+        }
+
+        private void buttonSeek_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection conn = DataResources.getConnection();
             Trajet trajet = new Trajet();
-            trajet.createur = this.user.login;
-            trajet.descriptionTrajet = this.trajetDescription.Text;
-            trajet.dateTrajet = dateDepart.Day.Text + "/" + dateDepart.Month.Text + "/" + dateDepart.Year.Text;
-            trajet.heureDepart = boxVilleDepart.heure.Text + ":" + boxVilleDepart.minute.Text;
-            trajet.villeDepart = boxVilleDepart.ville.Text;
-            trajet.heureArrivee = boxVilleArrivee.heure.Text + ":" + boxVilleArrivee.minute.Text;
-            trajet.villeArrivee = boxVilleArrivee.ville.Text;
-            trajet.creerTrajet(conn);
-            string query1 = "INSERT INTO trajet(date, ;
-            string query = "SELECT * FROM trajet WHERE login = '" + this.user.login  + "' AND idtrajet = (SELECT max(idtrajet) FROM trajet)";
-            NpgsqlCommand cmd = new NpgsqlCommand(query1, conn);
-            cmd.ExecuteNonQuery();
-            NpgsqlDataReader reader = DataResources.getReader(conn, query);
-            DataResources.getReader(conn, query);
-            Trajet newTrajet = new Trajet(reader);
-            this.user.trajets.Add(newTrajet);
-            DataResources.closeReader(conn, reader);
+            List<string> recherche = new List<string>();
+            recherche.Add(this.dateSeek.Day.Text);
+            recherche.Add(this.dateSeek.Month.Text);
+            recherche.Add(this.dateSeek.Year.Text);
+            recherche.Add(this.villeArriveeSeek.ville.Text);
+            recherche.Add(this.villeArriveeSeek.heure.Text);
+            recherche.Add(this.villeArriveeSeek.minute.Text);
+            recherche.Add(this.villeDepartSeek.ville.Text);
+            recherche.Add(this.villeDepartSeek.heure.Text);
+            recherche.Add(this.villeDepartSeek.minute.Text);
+
+
+            
+            try
+            {
+                List<Trajet> listeRecherche = new List<Trajet>(DataResources.chercherTrajet(conn, recherche));
+                
+                MessageBox.Show("ça fonctionne !");
+                if(listeRecherche == null)
+                {
+                    MessageBox.Show("Pas de résultats !");
+                }
+                refreshTrajetListe(listeRecherche, grilleRecherche);
+
+            }
+            catch(Npgsql.NpgsqlException)
+            {
+                MessageBox.Show("Veuillez saisir tout les champs requis !", "Attention !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            
+        }
+
+        private void resultatTrajet1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateDepart_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void afficherMessErreur(Exception msg)
+        {
+            MessageBox.Show(msg.ToString());
+        }
+
+
+        /*
+            Permet le remplissage des trajets crées par l'utilisateur
+        
+        */
+            
+        public void refreshTrajetListe(List<Trajet> Trajets, DataGridView grid)
+        {
+            grid.Rows.Clear();
+ 
+            foreach(Trajet trajet in Trajets)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(grid);
+                row.Cells[0].Value = trajet.createur;
+                row.Cells[1].Value = trajet.dateTrajet;
+                row.Cells[2].Value = trajet.heureDepart;
+                row.Cells[3].Value = trajet.heureArrivee;
+                row.Cells[4].Value = trajet.villeDepart;
+                row.Cells[5].Value = trajet.villeArrivee;
+                row.Cells[6].Value = trajet.descriptionTrajet;
+                grid.Rows.Add(row);
+
+            }
+
+        }
+
+        /*
+        Remplis la DatagridView de l'onglet recherche
+        */
+        public void fillRechercheTrajetListe(Utilisateur user, DataGridView grid)
+        {
+            grid.Rows.Clear();
+
+            foreach (Trajet trajet in this.user.trajets)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(grid);
+                row.Cells[0].Value = trajet.createur;
+                row.Cells[1].Value = trajet.dateTrajet;
+                row.Cells[2].Value = trajet.heureDepart;
+                row.Cells[3].Value = trajet.heureArrivee;
+                row.Cells[4].Value = trajet.villeDepart;
+                row.Cells[5].Value = trajet.villeArrivee;
+                row.Cells[6].Value = trajet.descriptionTrajet;
+                grid.Rows.Add(row);
+
+            }
+
+        }
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void gridWelcome_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void labelWelcome_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            int randomNumber = rand.Next(0, 4);
+            switch (randomNumber)
+            {
+                case 0:
+                    this.gifCar.Image = global::CarShare.Properties.Resources.car;
+                    break;
+                case 1:
+                    this.gifCar.Image = global::CarShare.Properties.Resources.LOGO_GSB;
+                    break;
+                case 2:
+                    this.gifCar.Image = global::CarShare.Properties.Resources.gridcar;
+                    break;
+                case 3:
+                    this.gifCar.Image = global::CarShare.Properties.Resources.computer;
+                    break;
+
+
+            }
+        }
+
+        private void gifCar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.gifCar.Image = null;
+        }
+
+        private void villeArriveeSeek_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boxVilleDepart_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -69,7 +69,7 @@
             this.groupBox.Size = new System.Drawing.Size(234, 45);
             this.groupBox.TabIndex = 4;
             this.groupBox.TabStop = false;
-            this.groupBox.Text = "groupBox1";
+            this.groupBox.Text = "";
             // 
             // NewEtape
             // 
